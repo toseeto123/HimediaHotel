@@ -32,7 +32,9 @@
                 <div class="middle_box">
                 <form action="HotelServlet" name="frm" method="post">
                 <input type="hidden" name="command" value="hotel_main_page_form">
-                   
+                
+                <!-- <input type="hidden" name="lev" value="A"> -->
+                        
                         <input type="text" placeholder="아이디" name="id">
                         <input type="password" placeholder="비밀번호" name="pass">
                         <input type=submit value="로그인" 

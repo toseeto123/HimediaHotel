@@ -79,37 +79,44 @@ public class hotelDAO {
 		return hvo;
 	}
 	//유저 check 메소드 (로그인관련)
-		public int userCheck(String id,String pass) {
-			int result=5;
-			Connection conn=null;
-			PreparedStatement pstmt=null;
-			ResultSet rs=null;
-			String sql="select pass from register where id=?";
+	public int userCheck(String id,String pass) {
+		int result=5;
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="select * from register where id=?";
+		
+		try {
+			conn=DBManager.getConnection();
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs=pstmt.executeQuery();
 			
-			
-			try {
-				conn=DBManager.getConnection();
-				pstmt=conn.prepareStatement(sql);
-				pstmt.setString(1, id);
-				rs=pstmt.executeQuery();
-				
-				if(rs.next()) {
-					if(pass.equals(rs.getString("pass"))) {
-							result=2; //로그인성공
-					}else {//비밀번호가 일치하지않는경우
-						result=0;
-					}
-				}else {//아이디가 존재하지않을경우
-					result=-1;
+			if(rs.next()) {
+				if(pass.equals(rs.getString("pass"))) {
+					  if(rs.getString("lev").equals(rs.getString("A"))) { //sql내의 필드명은 대소문자구별하지않음
+						  //lev이 A일경우
+						  result=2; 	//관리자로 로그인 성공
+						  if(rs.getString("lev").equals(rs.getString("B"))) {
+							  result=3; //일반 회원으로 로그인 성공
+						  }
+					  }else {//레벨이 불일치할경우
+						  result=1;
 				}
-			}catch(Exception e) {
-				e.printStackTrace();
-			}finally {
-				DBManager.close(rs, pstmt, conn);
+					
+			}else {//비밀번호가 일치하지않는경우
+				result=0;
 			}
-			return result;
+		}else {//아이디가 존재하지않을경우
+			result=-1;
 		}
-
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(rs, pstmt, conn);
+		}
+		return result;
+	}
 		// 회원정보를 가져올 getMember메소드 
 		public hotelVO getMember(String id) {
 			hotelVO member=null;
