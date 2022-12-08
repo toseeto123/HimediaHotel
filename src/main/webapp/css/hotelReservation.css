@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+html,
+body{
+    width: 100%;
+    height: 100%;
+}
+
+input,
+a,
+button{
+    font-family:'Poppins', sans-serif;
+    text-decoration: none;
+    color: black;
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.container .ReserveBox{
+    width: 1200px;
+    height: 100px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 15px;
+    margin: auto;
+
+}
+
+.container .room,
+.container .guest,
+.container .start_date,
+.container .finish_date,
+.container .reserve
+{
+
+    width: 200px;
+    height: 50px;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 12px 13px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    text-align: left;
+    margin-top: 25px;
+    margin-left:20px;
+}
+
+.container .reserve{
+    text-align: center;
+    cursor: pointer;
+}
+

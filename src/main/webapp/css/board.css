@@ -1,0 +1,52 @@
+#wrap {
+	width: 971px;
+	margin: 0 auto;
+	margin-top:30px;
+}
+
+h1 {
+	color: black;
+	font-size:30px;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 12px;
+	line-height: 24px;
+}
+
+table td, th {
+	border: #d3d3d3 solid 1px;
+	padding: 5px;
+}
+
+td:hover {
+/* 	background-color: lightblue; */
+}
+
+table.list td, th {
+	border: #d3d3d3 solid 1px;
+	padding: 5px;
+	text-align: center;
+}
+
+th {
+	background: lightgray;
+	width: 120px;
+}
+
+img {
+	width: 220px;
+	height: 300px;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: green;
+}
